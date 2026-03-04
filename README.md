@@ -1,22 +1,38 @@
 # Praktikum 1 - User Management REST API
 
-Aplikasi REST API sederhana untuk manajemen data pengguna menggunakan Spring Boot, Spring Data JPA, MySQL, Lombok, MapStruct, dan Validation.
+Aplikasi REST API sederhana untuk manajemen data pengguna menggunakan **Spring Boot**, **Spring Data JPA**, **MySQL**, **Lombok**, **MapStruct**, dan **Validation**.
 
-## Website
 ---
-<img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/8a409692-9018-473a-a05e-decd0d3f0339" />
 
+## Tampilan Website
 
-## Endpoint API
+![Daftar Pengguna](<img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/8a409692-9018-473a-a05e-decd0d3f0339" />)
 
-### Base URL
+---
+
+## Base URL
+
 ```
 http://localhost:8080
 ```
 
 ---
 
-### 1. Create User (Tambah User)
+## Ringkasan Endpoint
+
+| Method | Endpoint | Deskripsi |
+|--------|----------|-----------|
+| POST | /api/users | Tambah user baru |
+| GET | /api/users | Ambil semua user |
+| GET | /api/users/{id} | Ambil user by ID |
+| PUT | /api/users/{id} | Update user by ID |
+| DELETE | /api/users/{id} | Hapus user by ID |
+
+---
+
+## Detail Endpoint
+
+### 1. Create User — Tambah User
 
 **Endpoint:**
 ```
@@ -31,24 +47,24 @@ Content-Type: application/json
 **Request Body:**
 ```json
 {
-  "name": "Cristiano Ronaldo",
-  "age": 40
+  "name": "Irfan Afifuddin",
+  "age": 20
 }
 ```
 
-**Response Body (Success - 201 Created):**
+**Response — 201 Created (Berhasil):**
 ```json
 {
   "status": "success",
   "data": {
-    "id": "550e8400-e29b-41d4-a716-446655440000",
-    "name": "Cristiano Ronaldo",
-    "age": 40
+    "id": "86661826-9ab4-428e-810d-6562b01da57b",
+    "name": "Irfan Afifuddin",
+    "age": 20
   }
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - Field kosong):**
+**Response — 400 Bad Request (Field kosong):**
 ```json
 {
   "status": "error",
@@ -56,7 +72,7 @@ Content-Type: application/json
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - Tipe data salah):**
+**Response — 400 Bad Request (Tipe data salah):**
 ```json
 {
   "status": "error",
@@ -66,38 +82,28 @@ Content-Type: application/json
 
 ---
 
-### 2. Get All Users (Ambil Semua User)
+### 2. Get All Users — Ambil Semua User
 
 **Endpoint:**
 ```
 GET /api/users
 ```
 
-**Request Body:**
-```
--
-```
-
-**Response Body (Success - 200 OK):**
+**Response — 200 OK (Berhasil):**
 ```json
 {
   "status": "success",
   "data": [
     {
-      "id": "550e8400-e29b-41d4-a716-446655440000",
-      "name": "wayne rooney",
+      "id": "86661826-9ab4-428e-810d-6562b01da57b",
+      "name": "Irfan Afifuddin",
       "age": 20
-    },
-    {
-      "id": "661f9511-f30c-52e5-b827-557766551111",
-      "name": "ryan gigs",
-      "age": 22
     }
   ]
 }
 ```
 
-**Response Body (Failed - 200 OK - Data kosong):**
+**Response — 200 OK (Data kosong):**
 ```json
 {
   "status": "success",
@@ -107,7 +113,7 @@ GET /api/users
 
 ---
 
-### 3. Get User By ID (Ambil User Berdasarkan ID)
+### 3. Get User By ID — Ambil User Berdasarkan ID
 
 **Endpoint:**
 ```
@@ -116,27 +122,22 @@ GET /api/users/{id}
 
 **Contoh:**
 ```
-GET /api/users/550e8400-e29b-41d4-a716-446655440000
+GET /api/users/86661826-9ab4-428e-810d-6562b01da57b
 ```
 
-**Request Body:**
-```
--
-```
-
-**Response Body (Success - 200 OK):**
+**Response — 200 OK (Berhasil):**
 ```json
 {
   "status": "success",
   "data": {
-    "id": "550e8400-e29b-41d4-a716-446655440000",
-    "name": "wayne rooney",
+    "id": "86661826-9ab4-428e-810d-6562b01da57b",
+    "name": "Irfan Afifuddin",
     "age": 20
   }
 }
 ```
 
-**Response Body (Failed - 404 Not Found - ID tidak ditemukan):**
+**Response — 404 Not Found (ID tidak ditemukan):**
 ```json
 {
   "status": "error",
@@ -144,7 +145,7 @@ GET /api/users/550e8400-e29b-41d4-a716-446655440000
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - ID tidak valid):**
+**Response — 400 Bad Request (ID tidak valid):**
 ```json
 {
   "status": "error",
@@ -154,7 +155,7 @@ GET /api/users/550e8400-e29b-41d4-a716-446655440000
 
 ---
 
-### 4. Update User (Perbarui Data User)
+### 4. Update User — Perbarui Data User
 
 **Endpoint:**
 ```
@@ -163,7 +164,7 @@ PUT /api/users/{id}
 
 **Contoh:**
 ```
-PUT /api/users/550e8400-e29b-41d4-a716-446655440000
+PUT /api/users/86661826-9ab4-428e-810d-6562b01da57b
 ```
 
 **Request Header:**
@@ -174,24 +175,24 @@ Content-Type: application/json
 **Request Body:**
 ```json
 {
-  "name": "wayne rooney Updated",
+  "name": "Irfan Afifuddin Updated",
   "age": 21
 }
 ```
 
-**Response Body (Success - 200 OK):**
+**Response — 200 OK (Berhasil):**
 ```json
 {
   "status": "success",
   "data": {
-    "id": "550e8400-e29b-41d4-a716-446655440000",
-    "name": "wayne rooney Updated",
+    "id": "86661826-9ab4-428e-810d-6562b01da57b",
+    "name": "Irfan Afifuddin Updated",
     "age": 21
   }
 }
 ```
 
-**Response Body (Failed - 404 Not Found - ID tidak ditemukan):**
+**Response — 404 Not Found (ID tidak ditemukan):**
 ```json
 {
   "status": "error",
@@ -199,7 +200,7 @@ Content-Type: application/json
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - Field kosong):**
+**Response — 400 Bad Request (Field kosong):**
 ```json
 {
   "status": "error",
@@ -207,7 +208,7 @@ Content-Type: application/json
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - Tipe data salah):**
+**Response — 400 Bad Request (Tipe data salah):**
 ```json
 {
   "status": "error",
@@ -217,7 +218,7 @@ Content-Type: application/json
 
 ---
 
-### 5. Delete User (Hapus User)
+### 5. Delete User — Hapus User
 
 **Endpoint:**
 ```
@@ -226,22 +227,17 @@ DELETE /api/users/{id}
 
 **Contoh:**
 ```
-DELETE /api/users/550e8400-e29b-41d4-a716-446655440000
+DELETE /api/users/86661826-9ab4-428e-810d-6562b01da57b
 ```
 
-**Request Body:**
-```
--
-```
-
-**Response Body (Success - 200 OK):**
+**Response — 200 OK (Berhasil):**
 ```json
 {
-  "status": "success delete user with id 550e8400-e29b-41d4-a716-446655440000"
+  "status": "success delete user with id 86661826-9ab4-428e-810d-6562b01da57b"
 }
 ```
 
-**Response Body (Failed - 404 Not Found - ID tidak ditemukan):**
+**Response — 404 Not Found (ID tidak ditemukan):**
 ```json
 {
   "status": "error",
@@ -249,7 +245,7 @@ DELETE /api/users/550e8400-e29b-41d4-a716-446655440000
 }
 ```
 
-**Response Body (Failed - 400 Bad Request - ID tidak valid):**
+**Response — 400 Bad Request (ID tidak valid):**
 ```json
 {
   "status": "error",
@@ -259,12 +255,11 @@ DELETE /api/users/550e8400-e29b-41d4-a716-446655440000
 
 ---
 
-## Ringkasan Endpoint
+## Teknologi yang Digunakan
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| POST | /api/users | Tambah user baru |
-| GET | /api/users | Ambil semua user |
-| GET | /api/users/{id} | Ambil user by ID |
-| PUT | /api/users/{id} | Update user by ID |
-| DELETE | /api/users/{id} | Hapus user by ID |
+- **Spring Boot** — Framework utama
+- **Spring Data JPA** — ORM untuk database
+- **MySQL** — Database relasional
+- **Lombok** — Mengurangi boilerplate code
+- **MapStruct** — Mapping antar object (DTO ↔ Entity)
+- **Validation** — Validasi request body
