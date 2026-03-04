@@ -5,7 +5,7 @@ Aplikasi REST API sederhana untuk manajemen data pengguna menggunakan Spring Boo
 ## Website
 ---
 <img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/8a409692-9018-473a-a05e-decd0d3f0339" />
----
+
 
 ## Endpoint API
 
