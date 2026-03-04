@@ -11,7 +11,7 @@ Aplikasi REST API sederhana untuk manajemen data pengguna menggunakan Spring Boo
 
 ### Base URL
 ```
-http://localhost:8080/api/users
+http://localhost:8080
 ```
 
 ---
